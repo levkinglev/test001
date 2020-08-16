@@ -2,18 +2,14 @@ FROM nginx
 
 #EXPOSE 8082
 
+#RUN apt update && apt -y install mc lynx
+
 COPY index.html /home
 
-COPY script.sh /
+#COPY script.sh /home/script.sh
+COPY script.sh /docker-entrypoint.d/script.sh
 
-RUN apt update && apt -y install mc lynx
+RUN chmod +x /docker-entrypoint.d/script.sh
+#RUN chmod +x /home/script.sh
 
-RUN sed 's!/usr/share/nginx/html!/home!' /etc/nginx/conf.d/default.conf
-
-RUN rm /usr/share/nginx/html/index.html
-
-RUN ln -s /home/index.html /usr/share/nginx/html/
-
-RUN service nginx restart
-
-CMD ["/bin/sh", "./script.sh"]
+#CMD ["/home/script.sh"]

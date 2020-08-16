@@ -1,5 +1,5 @@
 FROM nginx
 
-COPY script.sh
+COPY script.sh /
 
 CMD ["./script.sh"]

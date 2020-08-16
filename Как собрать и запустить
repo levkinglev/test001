@@ -1,0 +1,11 @@
+#Клониурем репозиторий себе
+git clone https://github.com/levkinglev/test001
+
+#Собираем образ
+docker build -t test02 /home/lev/test001
+
+#Запускаем контейнер (-d нужно для того, чтобы работало при закрытии терминала)
+docker run -p 8082:8082 --name test02 test02:latest
+
+#Проверяем действительно ли доступно
+lynx http://localhost:8082

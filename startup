@@ -1,0 +1,8 @@
+[Unit]
+Description=nginx reload
+
+[Service]
+ExecStart=/script.sh
+
+[Install]
+WantedBy=multi-user.target
